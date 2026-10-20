@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "mcp": "node mcp-server/server.js"
+  }
+}
