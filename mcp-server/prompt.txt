@@ -1,0 +1,17 @@
+Read SPEC.md and AGENTS.md.
+
+Plan only the first vertical slice described under "Slice 1" in SPEC.md.
+
+Do not write or modify any files yet.
+
+Your plan must name:
+- the database table or tables needed for this slice,
+- the HTTP endpoint(s),
+- the sign-in flow,
+- the list screen,
+- the seeded data needed to demonstrate the slice,
+- the files you expect to create or modify.
+
+Respect every non-goal in SPEC.md and do not plan features outside Slice 1.
+
+Keep the plan small and wait for my approval before building anything.

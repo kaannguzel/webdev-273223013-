@@ -1,5 +1,16 @@
 {
+  "name": "university-lab-booking",
+  "version": "1.0.0",
+  "description": "University Lab Booking application",
+  "type": "module",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "coverage": "node --experimental-test-coverage --test",
     "mcp": "node mcp-server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
