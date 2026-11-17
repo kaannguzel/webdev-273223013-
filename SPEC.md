@@ -76,9 +76,26 @@ Node.js with Express for the backend and plain HTML, CSS and JavaScript for the 
 - [AC-10] After signing in with a seeded student account, the workstations list shows the seeded workstation rows from the database.
 - [AC-11] Deleting one workstation row from the database and reloading the page removes that workstation from the list.
 
+
+### Slice 2: book a workstation
+
+- [AC-12] A signed-in student can create a booking for an existing workstation with a valid future start and end time, and the booking is stored in the database.
+- [AC-13] A booking that overlaps an existing booking for the same workstation is refused with 409, and no second booking row is created.
+- [AC-14] A request with an invalid time range, where the end is not after the start, is refused with 422 and no booking is created.
+- [AC-15] A signed-out visitor who tries to create a booking receives 401 and no booking is created.
+- [AC-16] A student can cancel their own booking and receives 204, and the booking row is removed.
+- [AC-17] A signed-in student who tries to cancel another student's booking receives 403, and the booking remains in the database.
+
 ## Traceability
 
 <!-- Filled in from Exercise 3 onward: each AC id, and the test that names it. -->
+
+| AC-12 | |
+| AC-13 | |
+| AC-14 | |
+| AC-15 | |
+| AC-16 | |
+| AC-17 | |
 
 | Criterion | Test |
 | --- | --- |
