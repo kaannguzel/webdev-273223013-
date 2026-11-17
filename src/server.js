@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { initDb } from './db.js';
 import { authenticateUser, getUserById } from './services/auth.js';
 import { getLabsAndWorkstations } from './services/labs.js';
+import { createBooking, cancelBooking } from './services/bookings.js';
 
 initDb();
 
@@ -114,6 +115,41 @@ app.get('/workstations', (req, res) => {
   `;
 
   res.send(html);
+});
+
+// POST /bookings
+app.post('/bookings', (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const { workstation_id, start_time, end_time } = req.body;
+    const booking = createBooking({
+      workstation_id,
+      user_id: req.user.id,
+      start_time,
+      end_time,
+    });
+    return res.status(201).json(booking);
+  } catch (err) {
+    return res.status(err.status || 500).json({ error: err.message });
+  }
+});
+
+// DELETE /bookings/:id
+app.delete('/bookings/:id', (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const bookingId = parseInt(req.params.id, 10);
+    cancelBooking(bookingId, req.user);
+    return res.status(204).send();
+  } catch (err) {
+    return res.status(err.status || 500).json({ error: err.message });
+  }
 });
 
 // Root redirect
