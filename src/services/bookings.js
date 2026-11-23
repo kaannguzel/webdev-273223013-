@@ -2,8 +2,13 @@ import {
   createBooking as dbCreateBooking,
   getBookingById,
   getBookingsForWorkstation,
+  getBookingsByUser,
   deleteBooking as dbDeleteBooking,
 } from '../data/bookings.js';
+
+export function getUserBookings(userId) {
+  return getBookingsByUser(userId);
+}
 
 export function createBooking({ workstation_id, user_id, start_time, end_time }) {
   const start = new Date(start_time);

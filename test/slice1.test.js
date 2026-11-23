@@ -13,6 +13,13 @@ process.env.NODE_ENV = 'test';
 
 const { app } = await import('../src/server.js');
 const { getDb } = await import('../src/db.js');
+
+const migrationPath = path.join(process.cwd(), 'migrations', '002_bookings.sql');
+if (fs.existsSync(migrationPath)) {
+  const migrationSql = fs.readFileSync(migrationPath, 'utf8');
+  getDb().exec(migrationSql);
+}
+
 const { authenticateUser, getUserById } = await import('../src/services/auth.js');
 
 let server;
